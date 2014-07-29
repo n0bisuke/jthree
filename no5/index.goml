@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<goml>
+	<head>
+		<txr id="blueSky" src="img/sky.png" />
+
+		<!--canvasコンテキスト（変数a）を操作するdrawFloor関数はJSファイルで定義します-->
+		<txr type="canvas" id="floorTxr" param="width: 32; height: 32; repeat: 10; wrap: 0;" draw="drawFloor( a );" />
+
+		<gmt type="Sphere" id="skyGmt" param="450 32 16" />
+		<gmt type="Plane" id="floorGmt" param="60 60" />
+
+		<!--箱庭（スカイドーム）は内側（裏面）から見るためsideプロパティを1に設定します-->
+		<mtr type="MeshPhong" id="skyMtr" param="side:1;ambient: #fff; map:#blueSky;"/>
+
+		<!--床は両面描画するためsideプロパティを2に設定します-->
+		<mtr type="MeshPhong" id="floorMtr" param="side:2; map: #floorTxr;" />
+
+		<!--HTMLのbody要素をフレームにするのでframe属性を省略します-->
+		<rdr param="antialias: true;" />
+
+		<!--MMDのモデルデータを取得します-->
+		<model src="model/miku.pmx" />
+
+		<!--MMDのモーションデータを取得します-->
+		<motion id="model_motion" src="motion/model_motion.vmd" />
+		<motion id="camera_motion" src="motion/camera_motion.vmd" />
+
+	</head>
+	<body>
+		<scene>
+			<!--スカイドームを設置-->
+			<mesh gmt="#skyGmt" mtr="#skyMtr" />
+			<!--床を設置-->
+			<mesh gmt="#floorGmt" mtr="#floorMtr" style="rotate:1.57 0 -0.785;"/>
+
+			<!--環境光を設置-->
+			<light type="Amb" />
+			<!--太陽光を画面左上手前に設置-->
+			<light type="Dir" style="light-color: #9f9f9f; position: -14 28 24.5;" />
+
+			<!--カメラを画面手前上部に設置してMMDのモーションを適用-->
+			<camera motion="#camera_motion" style="position: 0 10 30; lookAtY: 10;" />
+
+			<!--MMDのモデルを表示-->
+			<mmd model="model" motion="#model_motion" />
+		</scene>
+	</body>
+</goml>
