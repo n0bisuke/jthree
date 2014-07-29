@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<goml>
+	<head>
+		<gmt id="Gmt" type="Cube" param="3 3 3" />
+		<rdr frame="body" camera="camera:first"/>
+		<!-- rdr要素はcanvasタグを生成し、描画するレンダラーです。
+		frame属性にWebGLのフレームとなるHTML要素のjQueryセレクタを指定できます。
+		camera属性には3D空間の撮影に使うGOMLファイル内のcamera要素をjQueryセレクタで指定できます。
+		上記のframe属性とcamera属性の値はデフォルトで設定されているので省略して<rdr/>と記述することができます。 -->
+	</head>
+	<body>
+		<!-- body直下にはscene要素のみいくつでも設置できます -->
+		<scene>
+			<!-- scene要素の下に3Dオブジェクトを配置します -->
+			<camera style="positionZ: 10;" />
+			<mesh gmt="#Gmt" />
+		</scene>
+	</body>
+</goml>
