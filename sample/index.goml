@@ -39,7 +39,7 @@
 			<light type="Dir" style="light-color: #9f9f9f; position: -14 28 24.5;" />
 
 			<!--カメラを画面手前上部に設置してMMDのモーションを適用-->
-			<camera motion="#camera_motion" style="position: 0 10 30; lookAtY: 10;" />
+			<camera motion="#camera_motion" style="position: 0 0 30; lookAtY: 10;" />
 
 			<!--MMDのモデルを表示-->
 			<mmd model="model" motion="#model_motion" />
