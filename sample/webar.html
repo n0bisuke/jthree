@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+}
+</style>
+<script type="text/goml">
+<goml>
+	<head>
+		<rdr />
+	</head>
+	<body>
+		<scene>
+
+			<light type="Amb" />
+			<light type="Dir" style="light-color: #9f9f9f; position:-14 28 60;" />
+
+			<camera style="position: 0 10 30; lookAt: -10 10 0;"/>
+			<mmd model="../data/model/miku.pmx" motion="../data/motion/model.vmd"/>
+
+		</scene>
+	</body>
+</goml>
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="../script/jThree.min.js"></script>
+<script src="../plugin/ammo.js"></script>
+<script src="../plugin/jThree.MMD.js"></script>
+<script src="../plugin/jThree.WebAR.js"></script>
+<script>
+jThree( function( j3 ) {
+	j3.MMD.play();
+	j3.WebAR( function() {
+		//error
+		alert( "Browser do not correspond to the camera, the camera is not enabled." );
+	} ).start();
+},
+function() {
+	alert( "Your browser does not support WebGL." );
+} );
+</script>
+</head>
+<body></body>
+</html>
